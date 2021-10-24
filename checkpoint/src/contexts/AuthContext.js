@@ -1,6 +1,8 @@
 import React from 'react';
 import { signInWithGoogle } from '../firebase';
 import { auth } from '../firebase';
+import GoogleButton from 'react-google-button'
+import '../../src/styles/main.css'
 
 class AuthContext extends React.Component {
 
@@ -42,13 +44,18 @@ class AuthContext extends React.Component {
             </div>
             ) :
 
-            <button onClick={signInWithGoogle}>SIGN IN WITH GOOGLE</button>
+            <div className="google-button-container">
+                <div className="google-button">
+                    <GoogleButton
+                        onClick={signInWithGoogle}
+                    />
+                </div>
+            </div>
 
         }
       </div >
     );
   }
 }
-
 
 export default AuthContext;

@@ -1,0 +1,21 @@
+.google-button-container {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.google-button {
+    background-color: gainsboro;
+    text-align: center;
+    align-items: center;
+    width: fit-content;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+}
+
+.user-info {
+    font-size: 5px;
+}
