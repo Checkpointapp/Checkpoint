@@ -37,15 +37,16 @@ function Dashboard(props) {
   return (
       <>
 
-      <MainNavbar logout={logout}></MainNavbar>
-
       {user == false ?
         <>
         <HeroTitleDescription></HeroTitleDescription>
         <AuthContext></AuthContext>
         </>
         :
-        <Router />}
+        <>
+        <MainNavbar logout={logout}></MainNavbar>
+        <Router />
+        </>}
 
       </>
   )
