@@ -1,16 +1,17 @@
 import React from 'react';
-//import './App.css';
 import AuthContext from '../contexts/AuthContext';
 import MainNavbar from './MainNavbar'
+import HeroTitleDescription from './HeroTitleDescription';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Dashboard from './Dashboard';
 
 class App extends React.Component {
 
   render() {
     return (
       <>
-      
-      <MainNavbar></MainNavbar>
-      <AuthContext></AuthContext>
+
+      <Dashboard></Dashboard>
 
       </>
     )
