@@ -1,0 +1,16 @@
+.create-task-input-container {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-task-input {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    padding: 1rem;
+}
