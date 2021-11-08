@@ -11,6 +11,19 @@ function AuthContext() {
       signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID, firebase.auth.EmailAuthProvider.PROVIDER_ID]
   });
 
+  async function HideLoading() {
+    setTimeout(function () {
+        try {
+            let x = document.getElementsByClassName("ring-container");
+            x[0].style.display = "none";
+        } catch (error) {
+            console.log("");
+        }
+    }, 750);
+  }
+
+  HideLoading();
+
   return (
       <>
           <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />

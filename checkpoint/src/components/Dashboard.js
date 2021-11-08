@@ -5,6 +5,7 @@ import AuthContext from "../contexts/AuthContext"
 import firebase from "firebase/app";
 import { withRouter, useHistory } from "react-router";
 import Router from './Router'
+import Loading from "./Loading";
 
 function Dashboard(props) {
 
@@ -39,6 +40,7 @@ function Dashboard(props) {
 
       {user == false ?
         <>
+        <Loading></Loading>
         <HeroTitleDescription></HeroTitleDescription>
         <AuthContext></AuthContext>
         </>
