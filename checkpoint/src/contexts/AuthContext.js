@@ -1,7 +1,6 @@
 import React from 'react';
-import { signInWithGoogle } from '../firebase';
+import '../firebase';
 import firebase from "firebase/app";
-import GoogleButton from 'react-google-button'
 import '../../src/styles/main.css'
 import { StyledFirebaseAuth } from 'react-firebaseui';
 
@@ -17,7 +16,7 @@ function AuthContext() {
             let x = document.getElementsByClassName("ring-container");
             x[0].style.display = "none";
         } catch (error) {
-            console.log("");
+            console.log(error);
         }
     }, 750);
   }

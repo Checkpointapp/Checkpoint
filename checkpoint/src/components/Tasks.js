@@ -15,7 +15,6 @@ export default function Tasks() {
         starCountRef.on('value', (snapshot) => {
             const data = snapshot.val();
             setTasks(data);
-            console.log(data);
         });
     }, []);
 
@@ -26,10 +25,12 @@ export default function Tasks() {
             {tasks != null ? Object.keys(tasks).reverse().map((task) => {
               var text = tasks[task]['contents']['text'];
               return (
-                <li key={task}>
-                    <br></br>
-                    <Task date={task} text={text}/>
-                </li>
+                <ul className="tasklist">
+                    <li key={task}>
+                        <br></br>
+                        <Task date={task} text={text}/>
+                    </li>
+                </ul>
               )
             }) : <p>It's lonely here. Let's add some tasks!</p>}
             </div>

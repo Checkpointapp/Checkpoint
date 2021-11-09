@@ -3,7 +3,7 @@ import MainNavbar from "./MainNavbar"
 import HeroTitleDescription from "./HeroTitleDescription"
 import AuthContext from "../contexts/AuthContext"
 import firebase from "firebase/app";
-import { withRouter, useHistory } from "react-router";
+import { withRouter } from "react-router";
 import Router from './Router'
 import Loading from "./Loading";
 
@@ -38,7 +38,7 @@ function Dashboard(props) {
   return (
       <>
 
-      {user == false ?
+      {user === false ?
         <>
         <Loading></Loading>
         <HeroTitleDescription></HeroTitleDescription>

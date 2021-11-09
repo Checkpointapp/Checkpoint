@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import firebase from "firebase/app";
-import { withRouter, useHistory } from "react-router";
+import { withRouter } from "react-router";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import '../../src/styles/tasks.css'
 import "firebase/database";
