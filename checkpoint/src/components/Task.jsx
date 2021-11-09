@@ -1,9 +1,7 @@
 import '../styles/main.css';
 import '../styles/tasks.css';
-import Router from "./Router";
-import NavBar from "./MainNavbar";
 import firebase from "firebase/app";
-import { Card, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 function Tasks(props) {
 
@@ -17,7 +15,7 @@ function Tasks(props) {
     function deleteTask() {
         if(window.confirm("Are you sure to want to delete this task? ")){
             var userId = firebase.auth().currentUser.uid;
-            var ref = firebase.database().ref(userId + "/task/" + props.date);
+            var ref = firebase.database().ref("/users/" + userId + "/task/" + props.date);
             ref.remove();
         }
     }

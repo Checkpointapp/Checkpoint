@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import AuthContext from "../contexts/AuthContext"
 import firebase from "firebase/app";
 import { withRouter, useHistory } from "react-router";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
@@ -15,13 +14,19 @@ function CreateTask(props) {
         const now = new Date();  
         const utcMilli = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);  
         const utcSec = Math.round(utcMilli / 1000);
-        await firebase.database().ref(userId + "/tasks/" + utcSec + "/contents").set({
+        await firebase.database().ref("/users/" + userId + "/tasks/" + utcSec + "/contents").set({
             text: text
           });
           props.history.push({ 
             pathname: "/tasks"
         });
     }
+
+    const handleKeypress = e => {
+        if (e.key === "Enter") {
+          onSubmit();
+        }
+    };
 
   return (
       <>
@@ -34,9 +39,15 @@ function CreateTask(props) {
                         aria-describedby="idk wtf"
                         value={text}
                         onChange={(event) => setText(event.target.value)}
+                        onKeyPress={handleKeypress}
                     />
                 </InputGroup>
-                <Button onClick={onSubmit}>Create Task</Button>
+                <Button
+                    onClick={onSubmit}
+                    type="submit"
+                >
+                    Create Task
+                </Button>
             </div>
         </div>
       </>

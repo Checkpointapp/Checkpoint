@@ -1,10 +1,7 @@
 import '../styles/main.css';
-import Router from "./Router";
-import NavBar from "./MainNavbar";
 import "firebase/auth";
 import firebase from "firebase/app";
 import React, { useState, useEffect } from 'react';
-import { withRouter } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import Task from './Task';
 
@@ -14,7 +11,7 @@ export default function Tasks() {
 
     useEffect(() => {
         var userId = firebase.auth().currentUser.uid;
-        var starCountRef = firebase.database().ref(userId + "/tasks/");
+        var starCountRef = firebase.database().ref("users/" + userId + "/tasks/");
         starCountRef.on('value', (snapshot) => {
             const data = snapshot.val();
             setTasks(data);
@@ -28,9 +25,13 @@ export default function Tasks() {
             <div>
             {tasks != null ? Object.keys(tasks).reverse().map((task) => {
               var text = tasks[task]['contents']['text'];
-                <br></br>
-              return <Task date={task} text={text}/>
-            }) : null}
+              return (
+                <li key={task}>
+                    <br></br>
+                    <Task date={task} text={text}/>
+                </li>
+              )
+            }) : <p>It's lonely here. Let's add some tasks!</p>}
             </div>
         </div>
     );
