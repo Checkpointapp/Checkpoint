@@ -22,17 +22,17 @@ export default function Tasks() {
         <div>
             <Button href="/create-task" >Add a Task</Button>
             <div>
+            <ul className="tasklist">
             {tasks != null ? Object.keys(tasks).reverse().map((task) => {
               var text = tasks[task]['contents']['text'];
               return (
-                <ul className="tasklist">
                     <li key={task}>
                         <br></br>
                         <Task date={task} text={text}/>
                     </li>
-                </ul>
               )
             }) : <p>It's lonely here. Let's add some tasks!</p>}
+            </ul>
             </div>
         </div>
     );

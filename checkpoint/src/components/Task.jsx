@@ -15,7 +15,7 @@ function Tasks(props) {
     function deleteTask() {
         if(window.confirm("Are you sure to want to delete this task? ")){
             var userId = firebase.auth().currentUser.uid;
-            var ref = firebase.database().ref("/users/" + userId + "/task/" + props.date);
+            var ref = firebase.database().ref("users/" + userId + "/tasks/" + props.date);
             ref.remove();
         }
     }
