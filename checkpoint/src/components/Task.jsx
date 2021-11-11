@@ -22,11 +22,13 @@ function Tasks(props) {
 
     return (
       <>
-        <b><h4>{convertDate(props.date)}</h4></b> 
-        {props.text}
-        <br/><br/>
-        <Button onClick={deleteTask}>Delete</Button>
-        <br></br>
+        <div className="task-card">
+          <h4>{convertDate(props.date)}</h4>
+          {props.text}
+          <br />
+          <Button onClick={deleteTask}>Delete</Button>
+          <br />
+        </div>
 
       <br></br>
       </>

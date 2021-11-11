@@ -21,18 +21,20 @@ export default function Tasks() {
     return (
         <div>
             <Button href="/create-task" >Add a Task</Button>
-            <div>
-            <ul className="tasklist">
-            {tasks != null ? Object.keys(tasks).reverse().map((task) => {
-              var text = tasks[task]['contents']['text'];
-              return (
-                    <li key={task}>
-                        <br></br>
-                        <Task date={task} text={text}/>
-                    </li>
-              )
-            }) : <p>It's lonely here. Let's add some tasks!</p>}
-            </ul>
+            <div className="tasks-list-container">
+                <div className="tasks-list">
+                    <ul className="tasklist">
+                    {tasks != null ? Object.keys(tasks).reverse().map((task) => {
+                    var text = tasks[task]['contents']['text'];
+                    return (
+                            <li key={task}>
+                                <br></br>
+                                <Task date={task} text={text}/>
+                            </li>
+                    )
+                    }) : <p>It's lonely here. Let's add some tasks!</p>}
+                    </ul>
+                </div>
             </div>
         </div>
     );
