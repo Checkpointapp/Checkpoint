@@ -6,6 +6,7 @@ import firebase from "firebase/app";
 import { withRouter } from "react-router";
 import Router from './Router'
 import Loading from "./Loading";
+import SurveyNotif from "./SurveyNotif";
 
 function Dashboard(props) {
 
@@ -47,6 +48,7 @@ function Dashboard(props) {
         :
         <>
         <MainNavbar logout={logout}></MainNavbar>
+        <SurveyNotif></SurveyNotif>
         <Router />
         </>}
 
