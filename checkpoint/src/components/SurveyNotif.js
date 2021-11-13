@@ -23,7 +23,13 @@ function SurveyNotif(props) {
     return (
         <>
         {text === false ?
-            <p>Please answer a few questions to customize your Checkpoint experience!</p>
+            <>
+            <div className="survey-notification-container">
+                <div className="survey-notification">
+                    <p>Welcome! Please answer a few questions to customize your Checkpoint experience</p>
+                </div>
+            </div>
+            </>
             :
             null
         }
