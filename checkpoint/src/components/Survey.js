@@ -36,7 +36,7 @@ function Survey(props) {
                     <FormControl
                         placeholder="Task name"
                         aria-label="Task name"
-                        aria-describedby="idk wtf"
+                        aria-describedby="uhmm"
                         value={text}
                         onChange={(event) => setText(event.target.value)}
                         onKeyPress={handleKeypress}
