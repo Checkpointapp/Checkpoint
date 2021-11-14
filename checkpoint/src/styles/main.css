@@ -1,5 +1,14 @@
+html, body {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+}
+
 .main {
     z-index: 1;
+    height: 100%;
 }
 
 .google-button-container {

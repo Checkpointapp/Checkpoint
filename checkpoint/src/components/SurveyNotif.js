@@ -2,17 +2,13 @@ import '../styles/main.css';
 import '../styles/survey.css';
 import firebase from "firebase/app";
 import { Button } from 'react-bootstrap';
-import { useHistory } from "react-router";
+import { withRouter } from "react-router";
+import { Link } from 'react-router-dom';
 import "firebase/database";
 import React, { useState, useEffect } from 'react';
 
 function SurveyNotif(props) {
-    let history = useHistory();
     const [text, setText] = useState(null);
-
-    async function onClick() {
-        history.push('/registration-questions');
-    }
 
     useEffect(() => {
         var userId = firebase.auth().currentUser.uid;
@@ -24,15 +20,15 @@ function SurveyNotif(props) {
             });
     }, []);
 
-    if (history.location.pathname !== '/registration-questions') {
+    if (props.history.location.pathname !== '/registration-questions') {
         return (
             <>
             {text === false ?
                 <>
                 <div className="survey-notification-container">
                     <div className="survey-notification">
-                        <p>Welcome! Please answer a few questions to customize your Checkpoint experience</p>
-                        <Button onClick={onClick}></Button>
+                        <p>Welcome! Answer a few brief questions to customize Checkpoint!</p>
+                        <a href="/registration-questions"><Button>Let's Go!</Button></a>
                     </div>
                 </div>
                 </>
@@ -47,4 +43,4 @@ function SurveyNotif(props) {
 
 }
 
-export default SurveyNotif;
+export default withRouter(SurveyNotif);

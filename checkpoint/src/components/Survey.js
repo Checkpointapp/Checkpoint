@@ -30,6 +30,7 @@ function Survey(props) {
 
   return (
       <>
+        <p>SURVEY</p>
         <div className="create-task-input-container">
             <div className="create-task-input">
                 <InputGroup className="mb-3">
