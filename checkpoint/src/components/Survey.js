@@ -11,16 +11,15 @@ function Survey(props) {
     const [gradeLevel, setgradeLevel] = useState("");
 
     async function onSubmit() {
-        /*var userId = firebase.auth().currentUser.uid;
-        const now = new Date();  
-        const utcMilli = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);  
-        const utcSec = Math.round(utcMilli / 1000);
-        await firebase.database().ref("/users/" + userId + "/tasks/" + utcSec + "/contents").set({
-            text: text
-          });
-          props.history.push({ 
-            pathname: "/tasks"
-        });*/
+        var userId = firebase.auth().currentUser.uid;
+        await firebase.database().ref("/users/" + userId + "/survey").set({
+            preferredName: preferredName,
+            gradeLevel: gradeLevel,
+            completed: true
+        });
+        props.history.push({ 
+            pathname: "/"
+        });
     }
 
   return (
@@ -47,10 +46,10 @@ function Survey(props) {
                             value={gradeLevel}
                             onChange={(event) => setgradeLevel(event.target.value)}
                         >
-                            <option>9th</option>
-                            <option value="1">10th</option>
-                            <option value="2">11th</option>
-                            <option value="3">12th</option>
+                            <option value="9">9th</option>
+                            <option value="10">10th</option>
+                            <option value="11">11th</option>
+                            <option value="12">12th</option>
                         </Form.Select>
                     </InputGroup>
                 </div>
