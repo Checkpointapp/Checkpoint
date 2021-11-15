@@ -24,3 +24,35 @@
     height: auto;
     min-height: 100%;
 }
+
+.survey-container {
+    text-align: center;
+}
+
+.survey-container h1 {
+    font-size: 1.8rem;
+    padding: 10px;
+}
+
+.survey-input-container {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.survey-input-container p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.survey-input {
+    width: 25%;
+    max-width: 325px;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    padding: 1rem;
+}

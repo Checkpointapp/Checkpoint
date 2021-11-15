@@ -36,7 +36,6 @@ function CreateTask(props) {
                     <FormControl
                         placeholder="Task name"
                         aria-label="Task name"
-                        aria-describedby="idk wtf"
                         value={text}
                         onChange={(event) => setText(event.target.value)}
                         onKeyPress={handleKeypress}

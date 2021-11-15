@@ -3,7 +3,6 @@ import '../styles/survey.css';
 import firebase from "firebase/app";
 import { Button } from 'react-bootstrap';
 import { withRouter } from "react-router";
-import { Link } from 'react-router-dom';
 import "firebase/database";
 import React, { useState, useEffect } from 'react';
 
