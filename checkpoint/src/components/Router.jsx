@@ -3,6 +3,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import CreateTask from "./CreateTask";
 import Tasks from './Tasks';
 import Survey from "./Survey";
+import Preferences from "./Preferences";
 
 export default function Router() {
 
@@ -14,6 +15,7 @@ export default function Router() {
                 <Route exact path="/tasks" component={Tasks}/>
                 <Route exact path="/create-task" component={CreateTask}/>
                 <Route exact path="/registration-questions" component={Survey}/>
+                <Route exact path="/preferences" component={Preferences}/>
             </Switch>
         </BrowserRouter>
     </>
