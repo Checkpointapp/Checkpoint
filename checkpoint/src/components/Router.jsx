@@ -4,6 +4,7 @@ import CreateTask from "./CreateTask";
 import Tasks from './Tasks';
 import Survey from "./Survey";
 import Preferences from "./Preferences";
+import WriteDump from "./WriteDump";
 
 export default function Router() {
 
@@ -16,6 +17,7 @@ export default function Router() {
                 <Route exact path="/create-task" component={CreateTask}/>
                 <Route exact path="/registration-questions" component={Survey}/>
                 <Route exact path="/preferences" component={Preferences}/>
+                <Route exact path="/writing-dump" component={WriteDump}/>
             </Switch>
         </BrowserRouter>
     </>
