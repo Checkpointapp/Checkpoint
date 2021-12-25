@@ -19,6 +19,7 @@ function Dashboard(props) {
       // https://firebase.google.com/docs/reference/js/firebase.User
       // ...
       setUser(true);
+      console.log('hey idiot look here: TODO: PLAUSIBLE ANALYTICS');
     } else {
       // User is signed out
       // ...
