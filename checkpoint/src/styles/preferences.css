@@ -56,3 +56,9 @@
     margin: 0 auto;
     padding: 1rem;
 }
+
+@media only screen and (max-width: 1000px) {
+    .preferences-input {
+        width: 85%;
+    }
+}
