@@ -5,6 +5,7 @@ import Tasks from './Tasks';
 import Survey from "./Survey";
 import Preferences from "./Preferences";
 import WriteDump from "./WriteDump";
+import MainPage from "./MainPage";
 
 export default function Router() {
 
@@ -12,7 +13,7 @@ export default function Router() {
     <> 
         <BrowserRouter>
             <Switch>
-               {/* <Route exact path="/" component={MainPage}/>*/}
+                <Route exact path="/" component={MainPage}/>
                 <Route exact path="/tasks" component={Tasks}/>
                 <Route exact path="/create-task" component={CreateTask}/>
                 <Route exact path="/registration-questions" component={Survey}/>
