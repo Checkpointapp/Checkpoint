@@ -7,8 +7,8 @@ class HeroTitleDescription extends React.Component {
     render() {
         return (
             <Container>
-                <h1 className="main-page-header">Welcome to Checkpoint!</h1>
-                <p className="main-page-description">Get started below:</p>
+                <h1 className="main-page-header">Checkpoint</h1>
+                <p className="main-page-description">Ready to streamline your productivity? Get started below!</p>
             </Container>
         )
     }

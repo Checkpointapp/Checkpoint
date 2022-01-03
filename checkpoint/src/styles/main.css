@@ -37,12 +37,17 @@ html, body {
 .main-page-header {
     padding: 10px;
     padding-top: 40px;
-    font-size: 1.5rem;
+    font-size: 4rem;
     text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .main-page-description {
     padding: 10px;
     font-size: 1.2rem;
     text-align: center;
+}
+
+.main-page-desc-logged-in {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }

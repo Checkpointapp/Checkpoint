@@ -1,0 +1,30 @@
+h1 {
+    text-align: center;
+    margin: 2rem !important;
+}
+
+.textbox {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.textbox textarea {
+    width: 100%;
+    height: 70vh;
+    border: 0.7rem solid oldlace;
+    resize: none;
+    padding: 0.5rem;
+}
+
+.textbox textarea:focus-visible {
+    outline: 0;
+}
+
+@media only screen and (max-width: 800px) {
+    .textbox {
+        width: auto;
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+        font-size: larger;
+    }
+}

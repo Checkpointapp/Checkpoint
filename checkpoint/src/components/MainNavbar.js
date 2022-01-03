@@ -12,7 +12,10 @@ function MainNavbar(props) {
                 <Nav className="me-auto">
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/tasks">Tasks</Nav.Link>
-                    <Nav.Link href="/preferences">Preferences</Nav.Link>
+                    <NavDropdown>
+                        <Nav.Link href="/writing-dump">Writing Dump</Nav.Link>
+                        <Nav.Link href="/preferences">Preferences</Nav.Link>
+                    </NavDropdown>
                 </Nav>
                 <Nav className="ml-auto">
                     <Nav.Link onClick={props.logout}>Log out</Nav.Link>
@@ -23,4 +26,4 @@ function MainNavbar(props) {
     )
 }
 
-export default MainNavbar
+export default MainNavbar;

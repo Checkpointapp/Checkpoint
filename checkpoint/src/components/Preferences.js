@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import firebase from "firebase/app";
 import { withRouter } from "react-router";
 import { InputGroup, FormControl, Button, Form } from "react-bootstrap";
@@ -9,6 +9,7 @@ function Preferences(props) {
 
     const [preferredName, setpreferredName] = useState("");
     const [gradeLevel, setgradeLevel] = useState("");
+    const [prefs, getPrefs] = useState(null);
 
     async function onSubmit() {
         var userId = firebase.auth().currentUser.uid;
@@ -22,6 +23,15 @@ function Preferences(props) {
         });
     }
 
+    useEffect(() => {
+        var userId = firebase.auth().currentUser.uid;
+        var starCountRef = firebase.database().ref("users/" + userId + "/survey");
+        starCountRef.on('value', (snapshot) => {
+            const prefs = snapshot.val();
+            getPrefs(prefs);
+        });
+    }, []);
+
     // TODO: Get user data from database and display as the placeholders (or text already inputted?)
 
   return (
@@ -33,7 +43,7 @@ function Preferences(props) {
                 <div className="preferences-input">
                     <InputGroup className="mb-3">
                         <FormControl
-                            placeholder="Enter your preferred name"
+                            placeholder="Hello"
                             aria-label="Preferred Name"
                             value={preferredName}
                             onChange={(event) => setpreferredName(event.target.value)}
