@@ -2,8 +2,6 @@ import React from 'react';
 import Dashboard from './Dashboard';
 import '../../src/styles/main.css';
 
-  
-export default App;
 class App extends React.Component {
 
   render() {
