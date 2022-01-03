@@ -7,6 +7,7 @@ import { withRouter } from "react-router";
 import Router from './Router'
 import Loading from "./Loading";
 import SurveyNotif from "./SurveyNotif";
+import Footer from "./Footer";
 
 function Dashboard(props) {
 
@@ -50,6 +51,7 @@ function Dashboard(props) {
         <MainNavbar logout={logout}></MainNavbar>
         <SurveyNotif></SurveyNotif>
         <Router />
+        <Footer />
         </>}
 
       </>
