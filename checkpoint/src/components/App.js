@@ -4,8 +4,6 @@ import '../../src/styles/main.css';
 
 class App extends React.Component {
 
-
-
   render() {
     return (
       <>
