@@ -20,7 +20,6 @@ function Dashboard(props) {
       // https://firebase.google.com/docs/reference/js/firebase.User
       // ...
       setUser(true);
-      console.log('hey idiot look here: TODO: PLAUSIBLE ANALYTICS');
     } else {
       // User is signed out
       // ...
@@ -52,7 +51,7 @@ function Dashboard(props) {
         <MainNavbar logout={logout}></MainNavbar>
         <SurveyNotif></SurveyNotif>
         <Router />
-        <Footer></Footer>
+        {/*<Footer></Footer>*/}
         </>}
 
       </>
