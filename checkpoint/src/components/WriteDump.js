@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react"
 import firebase from "firebase/app";
 import { withRouter } from "react-router";
-import { InputGroup, FormControl, Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import '../../src/styles/writedump.css';
 import "firebase/database";
 
 function WriteDump(props) {
 
   const [text, setText] = useState("");
+  const [saved, setSaved] = useState("All Changes Saved");
 
   useEffect(() => {
     var userId = firebase.auth().currentUser.uid;
     var starCountRef = firebase.database().ref("users/" + userId + "/writing-dump/contents");
     starCountRef.once('value', (snapshot) => {
-        const data = snapshot.val();
-        setText(data.text);
+      const data = snapshot.val();
+      setText(data.text);
     });
-}, []);
+  }, []);
 
   async function onSubmit() {
     var userId = firebase.auth().currentUser.uid;
@@ -25,8 +26,9 @@ function WriteDump(props) {
     const utcSec = Math.round(utcMilli / 1000);
     await firebase.database().ref("/users/" + userId + "/writing-dump/contents").set({
       text: text,
-      lastSaved : utcSec
+      lastSaved: utcSec
     })
+    setSaved("All Changes Saved")
     console.log("success! saved ur stuff");
   }
 
@@ -36,15 +38,18 @@ function WriteDump(props) {
       <div className="textbox">
         <textarea
           value={text}
-          onChange={(event) => setText(event.target.value)}
+          onChange={(event) => { setText(event.target.value); setSaved("Unsaved Changes"); }}
         ></textarea>
-        <Button
-          onClick={onSubmit}
-          type="submit"
-        >
-          Save
-        </Button>
+        <div className="saved">
+          {saved}
+        </div>
       </div>
+      <Button
+        onClick={onSubmit}
+        type="submit"
+      >
+        Save
+      </Button>
     </>
   )
 }
