@@ -10,7 +10,6 @@ class App extends React.Component {
       <div className="main">
         <Dashboard></Dashboard>
       </div>
-
       </>
     )
   }
