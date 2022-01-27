@@ -9,7 +9,16 @@ function Preferences(props) {
 
     const [preferredName, setpreferredName] = useState("");
     const [gradeLevel, setgradeLevel] = useState("");
-    const [prefs, getPrefs] = useState(null);
+
+    useEffect(() => {
+        var userId = firebase.auth().currentUser.uid;
+        var starCountRef = firebase.database().ref("users/" + userId + "/survey");
+        starCountRef.once('value', (snapshot) => {
+          const data = snapshot.val();
+          setpreferredName(data.preferredName);
+          setgradeLevel(data.gradeLevel);
+        });
+      }, []);
 
     async function onSubmit() {
         var userId = firebase.auth().currentUser.uid;
@@ -23,17 +32,6 @@ function Preferences(props) {
         });
     }
 
-    useEffect(() => {
-        var userId = firebase.auth().currentUser.uid;
-        var starCountRef = firebase.database().ref("users/" + userId + "/survey");
-        starCountRef.on('value', (snapshot) => {
-            const prefs = snapshot.val();
-            getPrefs(prefs);
-        });
-    }, []);
-
-    // TODO: Get user data from database and display as the placeholders (or text already inputted?)
-
   return (
       <>
         <div className="preferences-container">
@@ -43,7 +41,6 @@ function Preferences(props) {
                 <div className="preferences-input">
                     <InputGroup className="mb-3">
                         <FormControl
-                            placeholder="Hello"
                             aria-label="Preferred Name"
                             value={preferredName}
                             onChange={(event) => setpreferredName(event.target.value)}
