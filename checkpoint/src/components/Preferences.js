@@ -9,6 +9,7 @@ function Preferences(props) {
 
     const [preferredName, setpreferredName] = useState("");
     const [gradeLevel, setgradeLevel] = useState("");
+    const [theme, setTheme] = useState("");
 
     useEffect(() => {
         var userId = firebase.auth().currentUser.uid;
@@ -17,6 +18,7 @@ function Preferences(props) {
           const data = snapshot.val();
           setpreferredName(data.preferredName);
           setgradeLevel(data.gradeLevel);
+          setTheme(data.theme);
         });
       }, []);
 
@@ -25,6 +27,7 @@ function Preferences(props) {
         await firebase.database().ref("/users/" + userId + "/survey").set({
             preferredName: preferredName,
             gradeLevel: gradeLevel,
+            theme: theme,
             completed: true
         });
         props.history.push({ 
@@ -59,6 +62,20 @@ function Preferences(props) {
                             <option value="10">10th</option>
                             <option value="11">11th</option>
                             <option value="12">12th</option>
+                        </Form.Select>
+                    </InputGroup>
+                </div>
+                <p>Theme</p>
+                <div className="preferences-input">
+                    <InputGroup className="mb-3">
+                        <Form.Select 
+                            aria-label="Select your theme (light or dark)"
+                            value={theme}
+                            onChange={(event) => setTheme(event.target.value)}
+                        >
+                            <option value="light">Light Theme</option>
+                            <option value="dark">Dark Theme</option>
+                            <option value="system">System Theme</option>
                         </Form.Select>
                     </InputGroup>
                 </div>
