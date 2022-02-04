@@ -40,3 +40,12 @@ ul, li {
     width: 100%;
     cursor: pointer;
 }
+
+.lonely {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.add-task {
+    text-align: center;
+}

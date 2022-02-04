@@ -20,7 +20,6 @@ export default function Tasks() {
 
     return (
         <div>
-            <Button href="/create-task" >Add a Task</Button>
             <div className="tasks-list-container">
                 <div className="tasks-list">
                     <ul className="tasklist">
@@ -32,9 +31,12 @@ export default function Tasks() {
                                 <Task date={task} text={text}/>
                             </li>
                     )
-                    }) : <p>It's lonely here. Let's add some tasks!</p>}
+                    }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
                     </ul>
                 </div>
+            </div>
+            <div className="add-task">
+                <Button href="/create-task" >Add Task</Button>
             </div>
         </div>
     );
