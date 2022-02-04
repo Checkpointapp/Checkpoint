@@ -8,7 +8,6 @@ import Router from './Router'
 import Loading from "./Loading";
 import SurveyNotif from "./SurveyNotif";
 import Footer from "./Footer";
-import SetThemeCookie from '../contexts/SetThemeCookie.js';
 
 function Dashboard(props) {
 
@@ -21,7 +20,6 @@ function Dashboard(props) {
       // https://firebase.google.com/docs/reference/js/firebase.User
       // ...
       setUser(true);
-      SetThemeCookie();
     } else {
       // User is signed out
       // ...
