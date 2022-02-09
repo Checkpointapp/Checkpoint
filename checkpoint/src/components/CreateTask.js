@@ -50,8 +50,8 @@ function CreateTask(props) {
                         aria-label="Select the list for this task"
                         value={list}
                         onChange={(event) => setList(event.target.value)}
-                        required
                     >
+                        <option value="" selected disabled hidden>List Name</option>
                         {lists != null ? Object.keys(lists).reverse().map((oneList) => {
                         var listName = lists[oneList]['listName'];
                         return (
