@@ -12,15 +12,6 @@ export default function Tasks() {
 
     useEffect(() => {
         var userId = firebase.auth().currentUser.uid;
-        var starCountRef = firebase.database().ref("users/" + userId + "/tasks/");
-        starCountRef.on('value', (snapshot) => {
-            const data = snapshot.val();
-            setTasks(data);
-        });
-    }, []);
-
-    useEffect(() => {
-        var userId = firebase.auth().currentUser.uid;
         var starCountRef = firebase.database().ref("users/" + userId + "/lists/");
         starCountRef.on('value', (snapshot) => {
             const data = snapshot.val();
@@ -56,7 +47,10 @@ export default function Tasks() {
                 </div>
             </div>
             <div className="add-task">
-                <Button href="/create-task" >Add Task</Button>
+                <Button href="/create-task" >New Task</Button>
+            </div>
+            <div className="add-task">
+                <Button href="/create-list" >New List</Button>
             </div>
         </div>
     );

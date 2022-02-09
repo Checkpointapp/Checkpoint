@@ -16,7 +16,8 @@ function CreateList(props) {
         const utcMilli = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);  
         const utcSec = Math.round(utcMilli / 1000);
         await firebase.database().ref("/users/" + userId + "/lists/" + utcSec + "_list").set({
-            listName: listName
+            listName: listName,
+            utcSec: utcSec
           });
           props.history.push({ 
             pathname: "/tasks"

@@ -8,7 +8,7 @@ import "firebase/database";
 function CreateTask(props) {
 
     const [text, setText] = useState("");
-    const [list, setList] = useState("");
+    const [listid, setListid] = useState("");
     const [lists, setLists] = useState("");
 
     useEffect(() => {
@@ -25,9 +25,9 @@ function CreateTask(props) {
         const now = new Date();  
         const utcMilli = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);  
         const utcSec = Math.round(utcMilli / 1000);
-        await firebase.database().ref("/users/" + userId + "/tasks/" + utcSec + "/contents").set({
+        await firebase.database().ref("/users/" + userId + "/lists/" + listid + "_list/tasks/" + utcSec + "/contents").set({
             text: text,
-            list: list
+            listid: listid
           });
           props.history.push({ 
             pathname: "/tasks"
@@ -48,14 +48,15 @@ function CreateTask(props) {
                     <Form.Select 
                         required
                         aria-label="Select the list for this task"
-                        value={list}
-                        onChange={(event) => setList(event.target.value)}
+                        value={listid}
+                        onChange={(event) => setListid(event.target.value)}
                     >
                         <option value="" selected disabled hidden>List Name</option>
                         {lists != null ? Object.keys(lists).reverse().map((oneList) => {
                         var listName = lists[oneList]['listName'];
+                        var listsec = lists[oneList]['utcSec'];
                         return (
-                                <option value={listName}>{listName}</option>
+                                <option value={listsec}>{listName}</option>
                         )
                         }) : <div></div>}
                     </Form.Select>
