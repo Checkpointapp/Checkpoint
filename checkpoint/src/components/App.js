@@ -9,13 +9,17 @@ const style = {
 }
 
 class App extends React.Component {
-
+  onDayClick = (e, day) => {
+    alert(day);
+  }
   render() {
     return (
       <>
       <div className="main">
         <Dashboard></Dashboard>
-        <Calendar style={style} width= "302px" />
+        <Calendar style={style} width= "302px" 
+        oneDayClick={(e, day)=> this.onDayaClick(e,day)}/>
+
       </div>
       </>
     )
