@@ -19,42 +19,40 @@ export default function Tasks() {
     }, []);
 
     return (
-        <div>
-            {lists != null ? Object.keys(lists).reverse().map((oneList) => {
-            var listName = lists[oneList]['listName'];
-            var listTasks = lists[oneList]['tasks'];
-
-            return (
-                    <>
-                        <div className="tasks-list">
-                            <p>{listName}</p>
-                        </div>
-                        
-                        <div className="tasks-list-container">
-                            <div className="tasks-list">
-                                <ul className="tasklist">
-                                    {listTasks != null ? Object.keys(listTasks).reverse().map((task) => {
-                                    var text = listTasks[task]['contents']['text'];
-                                    return (
-                                            <li key={task}>
-                                                <br></br>
-                                                <Task date={task} text={text}/>
-                                            </li>
-                                    )
-                                    }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
-                                </ul>
-                            </div>
-                        </div>
-                    </>
-            )
-            }) : <div></div>}
-
+        <div className="flex">
             <div className="add-task">
                 <Button href="/create-task" >New Task</Button>
             </div>
             <div className="add-task">
                 <Button href="/create-list" >New List</Button>
             </div>
+            {lists != null ? Object.keys(lists).reverse().map((oneList) => {
+                var listName = lists[oneList]['listName'];
+                var listTasks = lists[oneList]['tasks'];
+
+                return (
+                    <>
+                        <div className="tasks-list">
+                            <h2 className="list-title">{listName}</h2>
+
+                            <div className="tasks-list-container">
+                                <ul className="tasklist">
+                                    {listTasks != null ? Object.keys(listTasks).reverse().map((task) => {
+                                        var text = listTasks[task]['contents']['text'];
+                                        return (
+                                            <li key={task}>
+                                                <br></br>
+                                                <Task date={task} text={text} />
+                                            </li>
+                                        )
+                                    }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
+                                </ul>
+                            </div>
+                        </div>
+                    </>
+                )
+            }) : <div></div>}
+
         </div>
     );
 }
