@@ -53,7 +53,7 @@ function Dashboard(props) {
         <MainNavbar logout={logout}></MainNavbar>
         <SurveyNotif></SurveyNotif>
         <Router />
-        <Footer></Footer>
+        {/*<Footer></Footer>*/}
         </>}
 
       </>
