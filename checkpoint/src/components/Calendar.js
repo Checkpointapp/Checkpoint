@@ -33,7 +33,7 @@ export default class Calendar extends React.Component {
       return this.state.dateContext.daysInMonth();
   }
   currentDate = () => {
-      console.log("currentDate: ", this.state.dateContext.get("date"));
+      //console.log("currentDate: ", this.state.dateContext.get("date"));
       return this.state.dateContext.get("date");
   }
   currentDay = () => {
@@ -161,7 +161,7 @@ onDayClick = (e, day) => {
     this.setState({
         selectedDay: day
     }, () => {
-        console.log("SELECTED DAY: ", this.state.selectedDay);
+        //console.log("SELECTED DAY: ", this.state.selectedDay);
     });
 
     this.props.onDayClick && this.props.onDayClick(e, day);
@@ -184,7 +184,7 @@ onDayClick = (e, day) => {
         );
     }
 
-    console.log("blanks: ", blanks);
+    //console.log("blanks: ", blanks);
 
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
@@ -198,7 +198,7 @@ onDayClick = (e, day) => {
     }
 
 
-    console.log("days: ", daysInMonth);
+    //console.log("days: ", daysInMonth);
 
     var totalSlots = [...blanks, ...daysInMonth];
     let rows = [];
