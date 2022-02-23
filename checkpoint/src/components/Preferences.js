@@ -9,30 +9,31 @@ function Preferences(props) {
 
     const [preferredName, setpreferredName] = useState("");
     const [gradeLevel, setgradeLevel] = useState("");
-    const [prefs, getPrefs] = useState(null);
+    //const [theme, setTheme] = useState("");
+
+    useEffect(() => {
+        var userId = firebase.auth().currentUser.uid;
+        var starCountRef = firebase.database().ref("users/" + userId + "/survey");
+        starCountRef.once('value', (snapshot) => {
+          const data = snapshot.val();
+          setpreferredName(data.preferredName);
+          setgradeLevel(data.gradeLevel);
+          //setTheme(data.theme);
+        });
+      }, []);
 
     async function onSubmit() {
         var userId = firebase.auth().currentUser.uid;
         await firebase.database().ref("/users/" + userId + "/survey").set({
             preferredName: preferredName,
             gradeLevel: gradeLevel,
+            //theme: theme,
             completed: true
         });
         props.history.push({ 
             pathname: "/"
         });
     }
-
-    useEffect(() => {
-        var userId = firebase.auth().currentUser.uid;
-        var starCountRef = firebase.database().ref("users/" + userId + "/survey");
-        starCountRef.on('value', (snapshot) => {
-            const prefs = snapshot.val();
-            getPrefs(prefs);
-        });
-    }, []);
-
-    // TODO: Get user data from database and display as the placeholders (or text already inputted?)
 
   return (
       <>
@@ -43,7 +44,6 @@ function Preferences(props) {
                 <div className="preferences-input">
                     <InputGroup className="mb-3">
                         <FormControl
-                            placeholder="Hello"
                             aria-label="Preferred Name"
                             value={preferredName}
                             onChange={(event) => setpreferredName(event.target.value)}
@@ -65,6 +65,20 @@ function Preferences(props) {
                         </Form.Select>
                     </InputGroup>
                 </div>
+                {/*<p>Theme</p>
+                <div className="preferences-input">
+                    <InputGroup className="mb-3">
+                        <Form.Select 
+                            aria-label="Select your theme (light or dark)"
+                            value={theme}
+                            onChange={(event) => setTheme(event.target.value)}
+                        >
+                            <option value="light">Light Theme</option>
+                            <option value="dark">Dark Theme</option>
+                            <option value="system">System Theme</option>
+                        </Form.Select>
+                    </InputGroup>
+                </div>*/}
                 <Button
                     onClick={onSubmit}
                     type="submit"

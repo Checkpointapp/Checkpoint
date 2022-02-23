@@ -5,6 +5,11 @@ ul, li {
     padding-left: 0 !important;
 }
 
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .create-task-input-container {
     width: 100%;
     height: auto;
@@ -32,11 +37,25 @@ ul, li {
 
 .tasks-list {
     text-align: center;
-    width: 33.3vw;
+    max-width: 250px;
 }
 
 .task-card {
     text-align: left;
     width: 100%;
     cursor: pointer;
+}
+
+.lonely {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.add-task {
+    text-align: center;
+}
+
+.list-title {
+    font-size: 1.6rem;
+    padding-top: 1.25rem;
 }

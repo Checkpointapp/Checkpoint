@@ -9,12 +9,14 @@ function Survey(props) {
 
     const [preferredName, setpreferredName] = useState("");
     const [gradeLevel, setgradeLevel] = useState("");
+    //const [theme, setTheme] = useState("");
 
     async function onSubmit() {
         var userId = firebase.auth().currentUser.uid;
         await firebase.database().ref("/users/" + userId + "/survey").set({
             preferredName: preferredName,
             gradeLevel: gradeLevel,
+            //theme: theme,
             completed: true
         });
         props.history.push({ 

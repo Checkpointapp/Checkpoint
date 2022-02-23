@@ -43,13 +43,15 @@ function WriteDump(props) {
         <div className="saved">
           {saved}
         </div>
+        <div className="save-button">
+          <Button
+            onClick={onSubmit}
+            type="submit"
+          >
+            Save
+          </Button>
+        </div>
       </div>
-      <Button
-        onClick={onSubmit}
-        type="submit"
-      >
-        Save
-      </Button>
     </>
   )
 }
