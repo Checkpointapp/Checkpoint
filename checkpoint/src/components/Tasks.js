@@ -18,6 +18,14 @@ export default function Tasks() {
         });
     }, []);
 
+    function deleteList(utcSec) {
+        if (window.confirm("Are you sure to want to delete this list and all tasks in it? ")) {
+            var userId = firebase.auth().currentUser.uid;
+            var ref = firebase.database().ref("users/" + userId + "/lists/" + utcSec + "_list");
+            ref.remove();
+        }
+    }
+
     return (
         <div className="flex">
             <div className="add-task">
@@ -28,12 +36,16 @@ export default function Tasks() {
             </div>
             {lists != null ? Object.keys(lists).reverse().map((oneList) => {
                 var listName = lists[oneList]['listName'];
+                var listSec = lists[oneList]['utcSec'];
                 var listTasks = lists[oneList]['tasks'];
 
                 return (
                     <>
                         <div className="tasks-list">
                             <h2 className="list-title">{listName}</h2>
+                            <div className="delete-button">
+                                <Button onClick={() => {deleteList(listSec)} }>Delete</Button>
+                            </div>
 
                             <div className="tasks-list-container">
                                 <ul className="tasklist">
@@ -42,7 +54,7 @@ export default function Tasks() {
                                         return (
                                             <li key={task}>
                                                 <br></br>
-                                                <Task date={task} text={text} />
+                                                <Task date={task} text={text} listSec={listSec}/>
                                             </li>
                                         )
                                     }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
@@ -51,7 +63,7 @@ export default function Tasks() {
                         </div>
                     </>
                 )
-            }) : <div></div>}
+            }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
 
         </div>
     );

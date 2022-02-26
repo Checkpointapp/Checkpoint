@@ -38,6 +38,7 @@ ul, li {
 .tasks-list {
     text-align: center;
     max-width: 250px;
+    padding: 1rem;
 }
 
 .task-card {
@@ -58,4 +59,18 @@ ul, li {
 .list-title {
     font-size: 1.6rem;
     padding-top: 1.25rem;
+}
+
+.task-time {
+    font-size: 1rem;
+}
+
+.task-text {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.delete-button {
+    text-align: center;
 }

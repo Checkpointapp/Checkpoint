@@ -15,7 +15,8 @@ function Tasks(props) {
     function deleteTask() {
         if(window.confirm("Are you sure to want to delete this task? ")){
             var userId = firebase.auth().currentUser.uid;
-            var ref = firebase.database().ref("users/" + userId + "/tasks/" + props.date);
+            console.log("users/" + userId + "/lists/" + props.listSec + "_list" + "/tasks" + props.date);
+            var ref = firebase.database().ref("users/" + userId + "/lists/" + props.listSec + "_list" + "/tasks/" + props.date); //still not workiing?
             ref.remove();
         }
     }
@@ -23,10 +24,12 @@ function Tasks(props) {
     return (
       <>
         <div className="task-card">
-          <h4>{convertDate(props.date)}</h4>
-          {props.text}
+          <h2 className="task-text">{props.text}</h2>
+          <h4 className="task-time">{convertDate(props.date)}</h4>
           <br />
-          <Button onClick={deleteTask}>Delete</Button>
+          <div className="delete-button">
+            <Button onClick={deleteTask}>Delete</Button>
+          </div>
           <br />
         </div>
 
