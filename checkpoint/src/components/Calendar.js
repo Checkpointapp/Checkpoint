@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import '../../src/styles/calendar.css';
+import '../../src/styles/darkmode.css';
+
 
 export default class Calendar extends React.Component {
     state = {
