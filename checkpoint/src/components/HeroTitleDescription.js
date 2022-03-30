@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import '../../src/styles/main.css'
+import '../../src/styles/mainPage.css'
 
 
 class HeroTitleDescription extends React.Component {

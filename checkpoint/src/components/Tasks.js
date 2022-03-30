@@ -29,9 +29,6 @@ export default function Tasks() {
     return (
         <div className="flex">
             <div className="add-task">
-                <Button href="/create-task" >New Task</Button>
-            </div>
-            <div className="add-task">
                 <Button href="/create-list" >New List</Button>
             </div>
             {lists != null ? Object.keys(lists).reverse().map((oneList) => {
@@ -41,10 +38,13 @@ export default function Tasks() {
 
                 return (
                     <>
+                        <div className="add-task">
+                            <Button href="/create-task" >New Task</Button>
+                        </div>
                         <div className="tasks-list">
                             <h2 className="list-title">{listName}</h2>
                             <div className="delete-button">
-                                <Button onClick={() => {deleteList(listSec)} }>Delete</Button>
+                                <Button onClick={() => { deleteList(listSec) }}>Delete</Button>
                             </div>
 
                             <div className="tasks-list-container">
@@ -54,7 +54,7 @@ export default function Tasks() {
                                         return (
                                             <li key={task}>
                                                 <br></br>
-                                                <Task date={task} text={text} listSec={listSec}/>
+                                                <Task date={task} text={text} listSec={listSec} />
                                             </li>
                                         )
                                     }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}

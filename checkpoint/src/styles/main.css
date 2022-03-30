@@ -4,7 +4,8 @@ html {
 
 body {
     height: 100% !important;
-    background-color: rgba(48, 50, 177, 0.5);
+    background-color: white !important;
+    margin: 0;
 }
 
 #root {
@@ -49,6 +50,7 @@ body {
     font-size: 70px;
     line-height: 20px;
     text-align: center;
+    margin: 0;
 }
 
 .main-page-description {

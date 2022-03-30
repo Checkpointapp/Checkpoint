@@ -7,6 +7,7 @@ import { withRouter } from "react-router";
 import Router from './Router'
 import Loading from "./Loading";
 import SurveyNotif from "./SurveyNotif";
+import '../../src/styles/mainPage.css';
 //import Footer from "./Footer";
 
 
@@ -44,9 +45,11 @@ function Dashboard(props) {
 
       {user === false ?
         <>
+        <div className="background">
         <Loading></Loading>
         <HeroTitleDescription></HeroTitleDescription>
         <AuthContext></AuthContext>
+        </div>
         </>
         :
         <>
