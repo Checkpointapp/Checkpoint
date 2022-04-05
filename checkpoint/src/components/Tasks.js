@@ -1,4 +1,5 @@
 import '../styles/main.css';
+import '../styles/tasks.css';
 import "firebase/auth";
 import firebase from "firebase/app";
 import React, { useState, useEffect } from 'react';
@@ -27,6 +28,9 @@ export default function Tasks() {
     }
 
     return (
+        
+        <body>
+        <header> My Tasks!</header>
         <div className="flex">
             <div className="add-task">
                 <Button href="/create-list" >New List</Button>
@@ -39,12 +43,12 @@ export default function Tasks() {
                 return (
                     <>
                         <div className="add-task">
-                            <Button href="/create-task" >New Task</Button>
+                            <button href="/create-task" >New Task </button>
                         </div>
                         <div className="tasks-list">
                             <h2 className="list-title">{listName}</h2>
                             <div className="delete-button">
-                                <Button onClick={() => { deleteList(listSec) }}>Delete</Button>
+                                <button onClick={() => { deleteList(listSec) }}>Delete</button>
                             </div>
 
                             <div className="tasks-list-container">
@@ -66,5 +70,7 @@ export default function Tasks() {
             }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
 
         </div>
+        </body>
+
     );
 }

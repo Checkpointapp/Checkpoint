@@ -1,3 +1,14 @@
+.flex{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    display: block;
+    height: 45%;
+
+
+}
 ul, li {
     list-style-type: none;
     margin: 0 0;
@@ -5,9 +16,26 @@ ul, li {
     padding-left: 0 !important;
 }
 
-.flex {
-    display: flex;
-    flex-wrap: wrap;
+header{
+    text-align: center;
+    padding-top: 2.5%;
+    text-shadow: -4px 5px 11px rgba(0, 0, 0, 0.6);
+    color: #000000;
+    font-size: 3vw;
+
+}
+
+body{
+    background-color: #dbe6fbff !important;
+}
+/*when changed to button it works*/
+Button{ 
+    background-color: #0a074aff !important;
+    color: white;
+    padding: 15px 32px;
+    border-radius: 15% !important;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    display: inline-block;
 }
 
 .create-task-input-container {
@@ -33,12 +61,15 @@ ul, li {
     height: auto;
     margin: 0 auto;
     padding: 0.5rem;
+    display: inline-block !important;
+
 }
 
 .tasks-list {
     text-align: center;
     max-width: 250px;
     padding: 1rem;
+    display:inline;
 }
 
 .task-card {
@@ -53,7 +84,9 @@ ul, li {
 }
 
 .add-task {
-    text-align: center;
+    text-align: center;  
+    display: inline !important;
+  
 }
 
 .list-title {
@@ -74,3 +107,4 @@ ul, li {
 .delete-button {
     text-align: center;
 }
+
