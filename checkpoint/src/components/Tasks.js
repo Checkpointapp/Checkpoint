@@ -28,48 +28,52 @@ export default function Tasks() {
     }
 
     return (
-        
+
         <body>
-        <header> My Tasks!</header>
-        <div className="flex">
-            <div className="add-task">
-                <Button href="/create-list" >New List</Button>
+            <header> My Tasks</header>
+            <div className="tasks-everything-box">
+                <div className="add-task">
+                    <Button className="custom-button" href="/create-list" >New List</Button>
+                </div>
+                <div className="add-task">
+                    <Button className="custom-button-hide" href="/create-task" >New Task </Button>
+                </div>
+                {lists != null ? Object.keys(lists).reverse().map((oneList) => {
+                    var listName = lists[oneList]['listName'];
+                    var listSec = lists[oneList]['utcSec'];
+                    var listTasks = lists[oneList]['tasks'];
+                    let x = document.getElementsByClassName("custom-button-hide");
+                    x[0].style.visibility = "visible";
+
+                    return (
+                        <>
+                        <div className="tasks-flex">
+                            <div className="tasks-list">
+                                    <h2 className="list-title">{listName}</h2>
+                                        <div className="delete-Button">
+                                            <Button className="custom-button" onClick={() => { deleteList(listSec) }} className="custom-button">Delete</Button>
+                                        </div>
+
+                                        <div className="tasks-list-container">
+                                            <ul className="tasklist">
+                                                {listTasks != null ? Object.keys(listTasks).reverse().map((task) => {
+                                                    var text = listTasks[task]['contents']['text'];
+                                                    return (
+                                                        <li key={task}>
+                                                            <br></br>
+                                                            <Task date={task} text={text} listSec={listSec} />
+                                                        </li>
+                                                    )
+                                                }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
+                                            </ul>
+                                        </div>
+                                    </div>
+                        </div>                            
+                        
+                        </>
+                    )
+                }) : <div className="lonely"><p>It's lonely here. Let's add a list!</p></div>}
             </div>
-            {lists != null ? Object.keys(lists).reverse().map((oneList) => {
-                var listName = lists[oneList]['listName'];
-                var listSec = lists[oneList]['utcSec'];
-                var listTasks = lists[oneList]['tasks'];
-
-                return (
-                    <>
-                        <div className="add-task">
-                            <button href="/create-task" >New Task </button>
-                        </div>
-                        <div className="tasks-list">
-                            <h2 className="list-title">{listName}</h2>
-                            <div className="delete-button">
-                                <button onClick={() => { deleteList(listSec) }}>Delete</button>
-                            </div>
-
-                            <div className="tasks-list-container">
-                                <ul className="tasklist">
-                                    {listTasks != null ? Object.keys(listTasks).reverse().map((task) => {
-                                        var text = listTasks[task]['contents']['text'];
-                                        return (
-                                            <li key={task}>
-                                                <br></br>
-                                                <Task date={task} text={text} listSec={listSec} />
-                                            </li>
-                                        )
-                                    }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
-                                </ul>
-                            </div>
-                        </div>
-                    </>
-                )
-            }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
-
-        </div>
         </body>
 
     );
