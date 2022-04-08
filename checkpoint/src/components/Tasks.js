@@ -28,8 +28,8 @@ export default function Tasks() {
     }
 
     return (
-
-        <body>
+        <>
+        <div className="main">
             <header> My Tasks</header>
             <div className="tasks-everything-box">
                 <div className="add-task">
@@ -38,6 +38,7 @@ export default function Tasks() {
                 <div className="add-task">
                     <Button className="custom-button-hide" href="/create-task" >New Task </Button>
                 </div>
+                <div className="tasks-flex">
                 {lists != null ? Object.keys(lists).reverse().map((oneList) => {
                     var listName = lists[oneList]['listName'];
                     var listSec = lists[oneList]['utcSec'];
@@ -47,7 +48,6 @@ export default function Tasks() {
 
                     return (
                         <>
-                        <div className="tasks-flex">
                             <div className="tasks-list">
                                     <h2 className="list-title">{listName}</h2>
                                         <div className="delete-Button">
@@ -67,14 +67,14 @@ export default function Tasks() {
                                                 }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
                                             </ul>
                                         </div>
-                                    </div>
-                        </div>                            
+                                    </div>                            
                         
                         </>
                     )
                 }) : <div className="lonely"><p>It's lonely here. Let's add a list!</p></div>}
+                </div>
             </div>
-        </body>
-
+        </div>
+        </>
     );
 }

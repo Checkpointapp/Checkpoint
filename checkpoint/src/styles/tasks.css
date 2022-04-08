@@ -27,7 +27,7 @@ header{
 }
 
 
-body{
+.main {
     background-color: #dbe6fbff !important;
 }
 .to-do-box, .overdue-box{
@@ -78,14 +78,15 @@ body{
 .tasks-list {
     text-align: center;
     padding: 1rem;
-    display:inline;
-    width: 65%;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    display: inline;
+    width: 100%;
 }
 
 .tasks-flex{
     flex-direction: row;
     flex-wrap: nowrap;
-    overflow-x: scroll;
     overflow-y: hidden;
     display: flex;
 }
