@@ -36,7 +36,7 @@ export default function Tasks() {
                     <Button className="custom-button" href="/create-list" >New List</Button>
                 </div>
                 <div className="add-task">
-                    <Button className="custom-button-hide" href="/create-task" >New Task </Button>
+                    <Button className="custom-button-hide" href="/create-task" >New Task</Button>
                 </div>
                 <div className="tasks-flex">
                 {lists != null ? Object.keys(lists).reverse().map((oneList) => {

@@ -17,9 +17,9 @@ class MainPage extends React.Component {
     return (
       <>
         <h1 className="main-page-desc-logged-in">Welcome back! Let's get started.</h1>
-        <h2 class="calendar-heading">Your calendar:</h2>
+        {/*<h2 class="calendar-heading">Your calendar:</h2>
         <Calendar style={style} width="302px"
-          oneDayClick={(e, day) => this.onDayaClick(e, day)} />
+    oneDayClick={(e, day) => this.onDayaClick(e, day)} />*/}
       </>
     )
   }
