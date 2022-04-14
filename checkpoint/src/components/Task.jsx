@@ -25,7 +25,7 @@ function Tasks(props) {
       <>
         <div className="task-card">
           <h2 className="task-text">{props.text}</h2>
-          <h4 className="task-time">{convertDate(props.date)}</h4>
+          {/*<h4 className="task-time">{convertDate(props.date)}</h4>*/}
           <br />
           <div className="delete-button">
             <Button onClick={deleteTask}>Delete</Button>
