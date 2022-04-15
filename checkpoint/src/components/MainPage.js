@@ -18,18 +18,21 @@ export default function MainPage() {
   const [listid, setListid] = useState(null);
 
   function addPinMessage() {
-    let x = document.getElementsByClassName("list-title");
-    let y = document.getElementsByClassName("lonely");
-    let z = document.getElementsByClassName("pin-list-dialog");
-    try {
-      if (x[0] === undefined) {
-        z[0].style.setProperty("display", "block", "important");
-      } else {
-        z[0].style.setProperty("display", "none", "important");
+
+    setTimeout(() => {
+      let x = document.getElementsByClassName("list-title");
+      let y = document.getElementsByClassName("lonely");
+      let z = document.getElementsByClassName("pin-list-dialog");
+      try {
+        if (x[0] === undefined) {
+          z[0].style.setProperty("display", "block", "important");
+        } else {
+          z[0].style.setProperty("display", "none", "important");
+        }
+      } catch {
+        console.log('didnt run')
       }
-    } catch {
-      console.log('didnt run')
-    }
+    }, 300);
 
   }
 
@@ -47,6 +50,17 @@ export default function MainPage() {
     await firebase.database().ref("/users/" + userId + "/lists/" + listid + "_list/").update({
       pinnedList: true
     });
+    console.log("pin")
+    addPinMessage();
+  }
+
+  async function unpinList(listSec) {
+    var userId = firebase.auth().currentUser.uid;
+    await firebase.database().ref("/users/" + userId + "/lists/" + listSec + "_list/").update({
+      pinnedList: false
+    });
+    console.log("unpin")
+    addPinMessage();
   }
 
   return (
@@ -72,6 +86,12 @@ export default function MainPage() {
                 return (
                   <>
                     <div className="tasks-list">
+                      <Button
+                        onClick={() => { unpinList(listSec); addPinMessage() }}
+                        type="submit"
+                      >
+                        Unpin List
+                      </Button>
                       <h2 className="list-title">{listName}</h2>
                       <div className="tasks-list-container">
                         <ul className="tasklist">
@@ -116,7 +136,7 @@ export default function MainPage() {
                     </Form.Select>
                   </InputGroup>
                   <Button
-                    onClick={onSubmit}
+                    onClick={() => { onSubmit(); addPinMessage() }}
                     type="submit"
                   >
                     Pin List
