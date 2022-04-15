@@ -22,3 +22,20 @@
 .bulletin-heading a {
     color: white !important;
 }
+
+.pin-list-dialog {
+    display: none !important;
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    display: block;
+    float: left;
+}
+
+.lonely {
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2px;
+}
