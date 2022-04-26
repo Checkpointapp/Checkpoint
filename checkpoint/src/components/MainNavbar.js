@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container, NavDropdown} from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 
 function MainNavbar(props) {
 
@@ -9,17 +9,15 @@ function MainNavbar(props) {
                 <Navbar.Brand href="/">Checkpoint</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/tasks">Tasks</Nav.Link>
-                    <NavDropdown>
+                    <Nav className="me-auto">
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/tasks">Tasks</Nav.Link>
                         <Nav.Link href="/writing-dump">Writing Dump</Nav.Link>
                         <Nav.Link href="/preferences">Preferences</Nav.Link>
-                    </NavDropdown>
-                </Nav>
-                <Nav className="ml-auto">
-                    <Nav.Link onClick={props.logout}>Log out</Nav.Link>
-                </Nav>
+                    </Nav>
+                    <Nav className="ml-auto">
+                        <Nav.Link onClick={props.logout}>Log out</Nav.Link>
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

@@ -68,3 +68,9 @@ body {
 .calendar-heading {
     text-align: center;
 }
+
+.standard-heading {
+    text-align: center;
+    color: darkslategrey;
+    font-size: 40px !important;
+}

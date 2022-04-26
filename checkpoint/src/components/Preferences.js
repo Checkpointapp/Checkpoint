@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react"
 import firebase from "firebase/app";
 import { withRouter } from "react-router";
 import { InputGroup, FormControl, Button, Form } from "react-bootstrap";
-import '../../src/styles/preferences.css'
+import '../../src/styles/preferences.css';
+import '../../src/styles/main.css';
 import "firebase/database";
 
 function Preferences(props) {
@@ -38,7 +39,7 @@ function Preferences(props) {
   return (
       <>
         <div className="preferences-container">
-            <h1>Preferences ⚙</h1>
+            <h1 className="standard-heading">Preferences ⚙</h1>
             <div className="preferences-input-container">
                 <p>Preferred Name</p>
                 <div className="preferences-input">

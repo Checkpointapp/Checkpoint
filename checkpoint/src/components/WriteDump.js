@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 import { withRouter } from "react-router";
 import { Button } from "react-bootstrap";
 import '../../src/styles/writedump.css';
+import '../../src/styles/main.css';
 import "firebase/database";
 
 function WriteDump(props) {
@@ -34,7 +35,7 @@ function WriteDump(props) {
 
   return (
     <>
-      <h1>Writing Dump 📝</h1>
+      <h1 className="standard-heading">Writing Dump 📝</h1>
       <div className="textbox">
         <textarea
           value={text}

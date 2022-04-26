@@ -30,7 +30,7 @@ export default function Tasks() {
     return (
         <>
         <div className="main">
-            <header> My Tasks</header>
+            <h1 className='standard-heading'>Tasks ✔</h1>
             <div className="tasks-everything-box">
                 <div className="add-task">
                     <Button className="custom-button" href="/create-list" >New List</Button>

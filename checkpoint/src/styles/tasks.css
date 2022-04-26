@@ -15,16 +15,6 @@ ul, li {
     padding-left: 0 !important;
 }
 
-header{
-    text-align: center;
-    padding: 1.5%;
-    text-shadow: -4px 5px 11px rgba(0, 0, 0, 0.6);
-    color: #000000;
-    font-size: 30px;
-
-}
-
-
 .main {
     background-color: #dbe6fbff !important;
 }
