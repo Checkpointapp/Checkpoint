@@ -150,7 +150,7 @@ export default function MainPage() {
           <h1 className="bulletin-heading">Timer</h1>
         </div>
         <div className="bulletin">
-          <h1 className="bulletin-heading">Links</h1>
+          <h1 className="bulletin-heading">Resources</h1>
         </div>
       </div>
     </>
