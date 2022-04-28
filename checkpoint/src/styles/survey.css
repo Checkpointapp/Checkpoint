@@ -1,27 +1,25 @@
 .survey-notification-container {
+    position: absolute;
     text-align: center;
-    background-color: #17a2b8;
-    color: white;
-    margin: 0.5rem;
+    background-color: rgb(219, 230, 251);
+    color: darkslategrey;
+    margin: 0;
     line-height: normal;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     font-weight: 500;
-    position: relative;
-    height: 20%;
+    height: 100% !important;
+    width: 100% !important;
+    z-index: 5;
 }
 
 .survey-notification {
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
     margin: 0;
     padding: 1rem;
     text-align: center;
     width: 100%;
-    height: auto;
+    height: 100% !important;
     min-height: 100%;
 }
 

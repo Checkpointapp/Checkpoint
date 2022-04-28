@@ -8,9 +8,6 @@ import Router from './Router'
 import Loading from "./Loading";
 import SurveyNotif from "./SurveyNotif";
 import '../../src/styles/mainPage.css';
-//import Footer from "./Footer";
-
-
 
 function Dashboard(props) {
 
@@ -33,33 +30,34 @@ function Dashboard(props) {
 
   const logout = () => {
     firebase.auth().signOut().then(() => {
-        props.history.push({
-            pathname: "/"
-        });
-        window.location.reload();
+      props.history.push({
+        pathname: "/"
+      });
+      window.location.reload();
     });
   }
 
   return (
-      <>
+    <>
 
       {user === false ?
         <>
-        <div className="background">
-        <Loading></Loading>
-        <HeroTitleDescription></HeroTitleDescription>
-        <AuthContext></AuthContext>
-        </div>
+          <div className="background">
+            <Loading></Loading>
+            <HeroTitleDescription></HeroTitleDescription>
+            <AuthContext></AuthContext>
+          </div>
         </>
         :
         <>
-        <MainNavbar logout={logout}></MainNavbar>
-        <SurveyNotif></SurveyNotif>
-        <Router />
-        {/*<Footer></Footer>*/}
+          <MainNavbar logout={logout}></MainNavbar>
+          <div className="overlay-container">
+            <SurveyNotif></SurveyNotif>
+            <Router />
+          </div>
         </>}
 
-      </>
+    </>
   )
 }
 

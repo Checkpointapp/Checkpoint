@@ -1,4 +1,8 @@
 .background {
     background-color: rgb(106, 107, 209) !important;
-    height: 100%;
+    height: 100vw;
+}
+
+.overlay-container {
+    position: relative;
 }
