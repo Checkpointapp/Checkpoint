@@ -141,7 +141,7 @@ export default function MainPage() {
           <h1 className="bulletin-heading">Timer</h1>
         </div>
         <div className="bulletin">
-          <h1 className="bulletin-heading">Resources</h1>
+          <h1 className="bulletin-heading"><a href="/resources">Resources</a></h1>
         </div>
       </div>
     </>
