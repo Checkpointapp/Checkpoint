@@ -1,12 +1,12 @@
 import '../styles/main.css';
-import '../styles/tasks.css';
+import '../styles/resources.css';
 import "firebase/auth";
 import firebase from "firebase/app";
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
-import Task from './Task';
+import Resource from './Resource';
 
-export default function Tasks() {
+export default function Resources() {
 
     const [lists, setLists] = useState(null);
 
@@ -61,7 +61,7 @@ export default function Tasks() {
                                                     return (
                                                         <li key={task}>
                                                             <br></br>
-                                                            <Task date={task} text={text} listSec={listSec} />
+                                                            <Resource date={task} text={text} listSec={listSec} />
                                                         </li>
                                                     )
                                                 }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}

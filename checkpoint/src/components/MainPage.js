@@ -1,18 +1,13 @@
 import '../../src/styles/main.css';
 import '../../src/styles/bulletin.css';
-import Calendar from './Calendar';
 import '../styles/tasks.css';
 import "firebase/auth";
 import firebase from "firebase/app";
 import React, { useState, useEffect } from 'react';
 import Task from './Task';
-import { InputGroup, FormControl, Button, Form } from "react-bootstrap";
+import { InputGroup, Button, Form } from "react-bootstrap";
 
 export default function MainPage() {
-
-  /*onDayClick = (e, day) => {
-    alert(day);
-  }*/
 
   const [lists, setLists] = useState(null);
   const [listid, setListid] = useState(null);
@@ -66,10 +61,6 @@ export default function MainPage() {
   return (
     <>
       <h1 className="main-page-desc-logged-in">Welcome back! Let's get started.</h1>
-
-      {/*<h2 class="calendar-heading">Your calendar:</h2>
-        <Calendar style={style} width="302px"
-    oneDayClick={(e, day) => this.onDayaClick(e, day)} />*/}
 
       <div className="bulletin-board">
         <div className="bulletin">

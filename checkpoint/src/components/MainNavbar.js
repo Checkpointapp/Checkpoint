@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 
 function MainNavbar(props) {
 
@@ -12,6 +12,7 @@ function MainNavbar(props) {
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/tasks">Tasks</Nav.Link>
+                        <Nav.Link href="/resources">Resources</Nav.Link>
                         <Nav.Link href="/writing-dump">Writing Dump</Nav.Link>
                         <Nav.Link href="/preferences">Preferences</Nav.Link>
                     </Nav>

@@ -7,6 +7,7 @@ import Survey from "./Survey";
 import Preferences from "./Preferences";
 import WriteDump from "./WriteDump";
 import MainPage from "./MainPage";
+import Resources from "./Resources";
 
 export default function Router() {
 
@@ -21,6 +22,7 @@ export default function Router() {
                 <Route exact path="/registration-questions" component={Survey}/>
                 <Route exact path="/preferences" component={Preferences}/>
                 <Route exact path="/writing-dump" component={WriteDump}/>
+                <Route exact path="/resources" component={Resources}/>
             </Switch>
         </BrowserRouter>
     </>
