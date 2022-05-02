@@ -8,73 +8,54 @@ import Resource from './Resource';
 
 export default function Resources() {
 
-    const [lists, setLists] = useState(null);
+    const [resources, setresources] = useState(null);
 
     useEffect(() => {
         var userId = firebase.auth().currentUser.uid;
-        var starCountRef = firebase.database().ref("users/" + userId + "/lists/");
+        var starCountRef = firebase.database().ref("users/" + userId + "/resources/");
         starCountRef.on('value', (snapshot) => {
             const data = snapshot.val();
-            setLists(data);
+            setresources(data);
         });
     }, []);
 
-    function deleteList(utcSec) {
-        if (window.confirm("Are you sure to want to delete this list and all tasks in it? ")) {
+    function deleteresource(utcSec) {
+        if (window.confirm("Are you sure to want to delete this link?")) {
             var userId = firebase.auth().currentUser.uid;
-            var ref = firebase.database().ref("users/" + userId + "/lists/" + utcSec + "_list");
+            var ref = firebase.database().ref("users/" + userId + "/resources/" + utcSec + "_resource");
             ref.remove();
         }
     }
 
     return (
         <>
-        <div className="main">
-            <h1 className='standard-heading'>Resources 🔗</h1>
-            <div className="tasks-everything-box">
-                <div className="add-task">
-                    <Button className="custom-button" href="/create-list" >New List</Button>
-                </div>
-                <div className="add-task">
-                    <Button className="custom-button-hide" href="/create-task" >New Task</Button>
-                </div>
-                <div className="tasks-flex">
-                {lists != null ? Object.keys(lists).reverse().map((oneList) => {
-                    var listName = lists[oneList]['listName'];
-                    var listSec = lists[oneList]['utcSec'];
-                    var listTasks = lists[oneList]['tasks'];
-                    let x = document.getElementsByClassName("custom-button-hide");
-                    x[0].style.visibility = "visible";
-
-                    return (
-                        <>
-                            <div className="tasks-list">
-                                    <h2 className="list-title">{listName}</h2>
-                                        <div className="delete-Button">
-                                            <Button className="custom-button" onClick={() => { deleteList(listSec) }}>Delete</Button>
-                                        </div>
-
-                                        <div className="tasks-list-container">
-                                            <ul className="tasklist">
-                                                {listTasks != null ? Object.keys(listTasks).reverse().map((task) => {
-                                                    var text = listTasks[task]['contents']['text'];
-                                                    return (
-                                                        <li key={task}>
-                                                            <br></br>
-                                                            <Resource date={task} text={text} listSec={listSec} />
-                                                        </li>
-                                                    )
-                                                }) : <div className="lonely"><p>It's lonely here. Let's add some tasks!</p></div>}
-                                            </ul>
-                                        </div>
-                                    </div>                            
-                        
-                        </>
-                    )
-                }) : <div className="lonely"><p>It's lonely here. Let's add a list!</p></div>}
+            <div className="main">
+                <h1 className='standard-heading'>Resources 🔗</h1>
+                <div className="resources-everything-box">
+                    <div className="add-resource">
+                        <Button className="custom-button" href="/create-resource" >Add link</Button>
+                    </div>
+                    <div className="resources-flex">
+                        {resources != null ? Object.keys(resources).reverse().map((oneresource) => {
+                            var resourceName = resources[oneresource]['resourceName'];
+                            var resourcesec = resources[oneresource]['utcSec'];
+                            var text = resources[oneresource]['text'];
+                            let x = document.getElementsByClassName("custom-button-hide");
+                            {
+                                resources != null ? Object.keys(oneresource).reverse().map((oneresource) => {
+                                    var text = resources[oneresource]['contents']['text'];
+                                    return (
+                                        <li key={oneresource}>
+                                            <br></br>
+                                            <Resource text={text} resourcesec={resourcesec} />
+                                        </li>
+                                    )
+                                }) : <div className="lonely"><p>It's lonely here. Let's add some resources!</p></div>
+                            }
+                        }) : <div className="lonely"><p>It's lonely here. Let's add a resource!</p></div>}
+                    </div>
                 </div>
             </div>
-        </div>
         </>
     );
 }
