@@ -61,7 +61,7 @@ ul, li {
     height: auto;
     margin: 0 auto;
     padding: 0.5rem;
-    display: inline-block !important;
+    display: flex !important;
 
 }
 
@@ -75,12 +75,21 @@ ul, li {
 }
 
 .resources-flex {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .resource-card {
+    flex: 1 0 21%;
     text-align: center;
+    padding: 0.5rem;
+    margin: 5px;
+    padding-top: 2rem;
     width: 100%;
     cursor: pointer;
 }

@@ -1,16 +1,25 @@
 import '../../src/styles/main.css';
 import '../../src/styles/bulletin.css';
 import '../styles/tasks.css';
+import '../styles/resources.css';
 import "firebase/auth";
 import firebase from "firebase/app";
 import React, { useState, useEffect } from 'react';
 import Task from './Task';
-import { InputGroup, Button, Form } from "react-bootstrap";
+import { InputGroup, Button, Form, FormControl, Modal } from "react-bootstrap";
+import Resource from './Resource';
 
 export default function MainPage() {
 
   const [lists, setLists] = useState(null);
   const [listid, setListid] = useState(null);
+  const [resources, setresources] = useState(null);
+  const [newResourceName, setnewResourceName] = useState("");
+  const [resourceLink, setresourceLink] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   function addPinMessage() {
 
@@ -39,6 +48,32 @@ export default function MainPage() {
       setLists(data);
     });
   }, []);
+
+  useEffect(() => {
+    var userId = firebase.auth().currentUser.uid;
+    var starCountRef = firebase.database().ref("users/" + userId + "/resources/");
+    starCountRef.on('value', (snapshot) => {
+      const data = snapshot.val();
+      setresources(data);
+    });
+  }, []);
+
+  async function addResource() {
+    var userId = firebase.auth().currentUser.uid;
+    const now = new Date();
+    const utcMilli = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
+    const utcSec = Math.round(utcMilli / 1000);
+    var newLink = resourceLink;
+    if (!(resourceLink.startsWith("https://") || resourceLink.startsWith("http://"))) {
+      newLink = "https://" + resourceLink;
+    }
+    await firebase.database().ref("/users/" + userId + "/resources/" + utcSec + "_resource").set({
+      newResourceName: newResourceName,
+      resourceLink: newLink,
+      utcSec: utcSec
+    });
+    setShow(false);
+  }
 
   async function onSubmit() {
     var userId = firebase.auth().currentUser.uid;
@@ -137,11 +172,55 @@ export default function MainPage() {
             </div>
           </div>
         </div>
-        <div className="bulletin">
+        {/*<div className="bulletin">
           <h1 className="bulletin-heading">Timer</h1>
-        </div>
+                    </div>*/}
         <div className="bulletin">
           <h1 className="bulletin-heading"><a href="/resources">Resources</a></h1>
+          <div className="resources-everything-box">
+            <div className="add-resource">
+              <Button className="custom-button" onClick={handleShow} >Add link</Button>
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>New Resource</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <InputGroup className="mb-3">
+                    <FormControl
+                      aria-label="Resource Name"
+                      value={newResourceName}
+                      placeholder="Resource Name"
+                      onChange={(event) => setnewResourceName(event.target.value)}
+                    />
+                    <FormControl
+                      aria-label="Resource Link"
+                      value={resourceLink}
+                      placeholder="Resource Link"
+                      onChange={(event) => setresourceLink(event.target.value)}
+                    />
+                  </InputGroup>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button variant="primary" onClick={addResource}>
+                    Add link
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </div>
+            <div className="resources-flex">
+              {resources != null ? Object.keys(resources).reverse().map((oneresource) => {
+                var resourcesec = resources[oneresource]['utcSec'];
+                var text = resources[oneresource]['newResourceName'];
+                var link = resources[oneresource]['resourceLink'];
+                return (
+                  <Resource text={text} link={link} resourcesec={resourcesec} />
+                )
+              }) : <div className="lonely"><p>It's lonely here. Let's add a resource!</p></div>}
+            </div>
+          </div>
         </div>
       </div>
     </>
