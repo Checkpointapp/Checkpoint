@@ -7,9 +7,10 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 function Resource(props) {
 
   function deleteresource() {
-    if (window.confirm("Are you sure to want to delete this resource? ")) {
+    console.log(props.resourcesec)
+    if (window.confirm("Are you sure to want to delete this resource?")) {
       var userId = firebase.auth().currentUser.uid;
-      var ref = firebase.database().ref("users/" + userId + "/resources/" + props.resourceSec + "_resource");
+      var ref = firebase.database().ref("users/" + userId + "/resources/" + props.resourcesec + "_resource");
       ref.remove();
     }
   }

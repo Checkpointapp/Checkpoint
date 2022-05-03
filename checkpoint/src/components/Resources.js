@@ -32,7 +32,6 @@ export default function Resources() {
         const utcSec = Math.round(utcMilli / 1000);
         var newLink = resourceLink;
         if (!(resourceLink.startsWith("https://") || resourceLink.startsWith("http://"))) {
-            console.log("no")
             newLink = "https://" + resourceLink;
         }
         await firebase.database().ref("/users/" + userId + "/resources/" + utcSec + "_resource").set({

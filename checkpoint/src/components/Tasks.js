@@ -51,7 +51,7 @@ export default function Tasks() {
                             <div className="tasks-list">
                                     <h2 className="list-title">{listName}</h2>
                                         <div className="delete-Button">
-                                            <Button className="custom-button" onClick={() => { deleteList(listSec) }}>Delete</Button>
+                                            <Button className="custom-button" onClick={() => { deleteList(listSec) }}>Delete List</Button>
                                         </div>
 
                                         <div className="tasks-list-container">

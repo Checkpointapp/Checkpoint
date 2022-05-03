@@ -9,9 +9,12 @@
 }
 ul, li {
     list-style-type: none;
+    display: block;
     margin: 0 0;
     padding: 0 0;
     padding-left: 0 !important;
+    float: left;
+    display: inline-block;
 }
 
 .main {
@@ -71,15 +74,13 @@ ul, li {
     width: 100%;
 }
 
-.resources-flex{
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-y: hidden;
-    display: flex;
+.resources-flex {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .resource-card {
-    text-align: left;
+    text-align: center;
     width: 100%;
     cursor: pointer;
 }
