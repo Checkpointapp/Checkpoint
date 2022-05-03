@@ -8,11 +8,13 @@
     margin-left: 100px;
     margin-right: 100px;
 }
+
 ul, li {
     list-style-type: none;
     margin: 0 0;
     padding: 0 0;
     padding-left: 0 !important;
+    display: initial;
 }
 
 .main {
@@ -54,13 +56,12 @@ ul, li {
 }
 
 .tasks-list-container {
-    text-align: center;
+    text-align: center !important;
     width: 100%;
     height: auto;
     margin: 0 auto;
     padding: 0.5rem;
-    display: flex !important;
-
+    display: inline-block !important;
 }
 
 .tasks-list {
@@ -72,7 +73,7 @@ ul, li {
     width: 100%;
 }
 
-.tasks-flex{
+.tasks-flex {
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-y: hidden;
@@ -144,7 +145,6 @@ ul, li {
 }
 
 .tasklist {
-    margin-left: auto;
-    margin-right: auto;
-    min-width: 100px;
+    width: 100%;
+    display: inline-block;
 }
