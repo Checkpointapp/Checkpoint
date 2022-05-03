@@ -4,7 +4,7 @@ import firebase from "firebase/app";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-function Resources(props) {
+function Resource(props) {
 
   function deleteresource() {
     if (window.confirm("Are you sure to want to delete this resource? ")) {
@@ -21,7 +21,7 @@ function Resources(props) {
           <div className="delete-button">
             <FontAwesomeIcon icon={faXmark} onClick={deleteresource} />
           </div>
-          <h2 className="resource-text">{props.text}</h2>
+          <a className="resource-link" href={props.link}>{props.text}</a>
         </div>
       </div>
     </>
@@ -29,4 +29,4 @@ function Resources(props) {
   );
 }
 
-export default Resources;
+export default Resource;

@@ -3,12 +3,18 @@ import '../styles/resources.css';
 import "firebase/auth";
 import firebase from "firebase/app";
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Modal, InputGroup, FormControl } from 'react-bootstrap';
 import Resource from './Resource';
 
 export default function Resources() {
 
     const [resources, setresources] = useState(null);
+    const [newResourceName, setnewResourceName] = useState("");
+    const [resourceLink, setresourceLink] = useState("");
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         var userId = firebase.auth().currentUser.uid;
@@ -19,12 +25,22 @@ export default function Resources() {
         });
     }, []);
 
-    function deleteresource(utcSec) {
-        if (window.confirm("Are you sure to want to delete this link?")) {
-            var userId = firebase.auth().currentUser.uid;
-            var ref = firebase.database().ref("users/" + userId + "/resources/" + utcSec + "_resource");
-            ref.remove();
+    async function addResource() {
+        var userId = firebase.auth().currentUser.uid;
+        const now = new Date();
+        const utcMilli = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
+        const utcSec = Math.round(utcMilli / 1000);
+        var newLink = resourceLink;
+        if (!(resourceLink.startsWith("https://") || resourceLink.startsWith("http://"))) {
+            console.log("no")
+            newLink = "https://" + resourceLink;
         }
+        await firebase.database().ref("/users/" + userId + "/resources/" + utcSec + "_resource").set({
+            newResourceName: newResourceName,
+            resourceLink: newLink,
+            utcSec: utcSec
+        });
+        setShow(false);
     }
 
     return (
@@ -33,25 +49,48 @@ export default function Resources() {
                 <h1 className='standard-heading'>Resources 🔗</h1>
                 <div className="resources-everything-box">
                     <div className="add-resource">
-                        <Button className="custom-button" href="/create-resource" >Add link</Button>
+                        <Button className="custom-button" onClick={handleShow} >Add link</Button>
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>New Resource</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <InputGroup className="mb-3">
+                                    <FormControl
+                                        aria-label="Resource Name"
+                                        value={newResourceName}
+                                        placeholder="Resource Name"
+                                        onChange={(event) => setnewResourceName(event.target.value)}
+                                    />
+                                    <FormControl
+                                        aria-label="Resource Link"
+                                        value={resourceLink}
+                                        placeholder="Resource Link"
+                                        onChange={(event) => setresourceLink(event.target.value)}
+                                    />
+                                </InputGroup>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={handleClose}>
+                                    Close
+                                </Button>
+                                <Button variant="primary" onClick={addResource}>
+                                    Add link
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
                     </div>
                     <div className="resources-flex">
                         {resources != null ? Object.keys(resources).reverse().map((oneresource) => {
-                            var resourceName = resources[oneresource]['resourceName'];
                             var resourcesec = resources[oneresource]['utcSec'];
-                            var text = resources[oneresource]['text'];
-                            let x = document.getElementsByClassName("custom-button-hide");
-                            {
-                                resources != null ? Object.keys(oneresource).reverse().map((oneresource) => {
-                                    var text = resources[oneresource]['contents']['text'];
-                                    return (
-                                        <li key={oneresource}>
-                                            <br></br>
-                                            <Resource text={text} resourcesec={resourcesec} />
-                                        </li>
-                                    )
-                                }) : <div className="lonely"><p>It's lonely here. Let's add some resources!</p></div>
-                            }
+                            var text = resources[oneresource]['newResourceName'];
+                            var link = resources[oneresource]['resourceLink'];
+                            return (
+                                <li key={oneresource}>
+                                    <br></br>
+                                    <Resource text={text} link={link} resourcesec={resourcesec} />
+                                </li>
+                            )
                         }) : <div className="lonely"><p>It's lonely here. Let's add a resource!</p></div>}
                     </div>
                 </div>

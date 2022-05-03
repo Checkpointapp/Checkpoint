@@ -120,10 +120,15 @@ ul, li {
     font-size: 1rem;
 }
 
-.resource-text {
+.resource-link {
     text-align: center;
     font-size: 1.6rem;
     font-weight: 400;
+    color: white;
+}
+
+.resource-link:hover {
+    color: white;
 }
 
 .delete-button {
